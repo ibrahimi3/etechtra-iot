@@ -22,6 +22,10 @@ collections_list = db.list_collection_names()
 #os.environ['TZ'] = 'Africa/Lagos'
 #time.tzset()
 
+class Root(Resource):
+    def get(self):
+        return {"message": "Welcome to etechtra RESTful service"}
+
 class Update(Resource):
     def get(self, sourcetype, deviceid, voltage, current):
         power = format(round( (voltage * current)/1000 , 2))
@@ -36,14 +40,6 @@ class Update(Resource):
                 return {'error': 'there was a problem updating'}
         return {'error' : 'invalid sourcetype' }
 
-
-"""class Solar(Resource):
-    def get(self, deviceid, entries):
-        return {'solardata': entries}
-
-class Acmains(Resource):
-    def get(self, deviceid, entries):
-        return {'acmainsdata': { 'entries': entries, 'deviceid': deviceid }}"""
 
 class Getall(Resource):
     def get(self, sourcetype, deviceid, sorting = 'asc'):
@@ -105,6 +101,7 @@ class Getentries(Resource):
         return {'error': 'invalid number of entries'}
 
 
+api.add_resource(Root,'/')
 api.add_resource(Update, '/update/<string:sourcetype>/<int:deviceid>/<float:voltage>/<float:current>')
 api.add_resource(Getall, '/getall/<string:sourcetype>/<int:deviceid>', '/getall/<string:sourcetype>/<int:deviceid>/<string:sorting>')
 api.add_resource(Getlastentry, '/getlastentry/<string:sourcetype>/<int:deviceid>')
