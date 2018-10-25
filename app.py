@@ -107,5 +107,5 @@ api.add_resource(Getall, '/getall/<string:sourcetype>/<int:deviceid>', '/getall/
 api.add_resource(Getlastentry, '/getlastentry/<string:sourcetype>/<int:deviceid>')
 api.add_resource(Getentries, '/getentries/<string:sourcetype>/<int:deviceid>/<int:entriesno>', '/getentries/<string:sourcetype>/<int:deviceid>/<int:entriesno>/<string:sorting>')
 
-
-app.run(port=5000)
+if __name__ == '__main__':
+    app.run(port=5000)
