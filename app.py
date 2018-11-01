@@ -59,7 +59,7 @@ class Getall(Resource):
             if not returndata:  # return data is empty
                 return {'message': 'No Records found for device with id ' + str(deviceid)}, 200
             else:
-                return {'data': returndata}, 200
+                return returndata, 200
         return {'error': 'invalid sourcetype'}
 
 class Getlastentry(Resource):
@@ -74,7 +74,7 @@ class Getlastentry(Resource):
             if not returndata:  # return data is empty
                 return {'message': 'No Records found for device with id ' + str(deviceid)}, 200
             else:
-                return {'data': returndata}, 200
+                return returndata, 200
         return {'error': 'invalid sourcetype'}
 
 class Getentries(Resource):
@@ -96,7 +96,7 @@ class Getentries(Resource):
                 if not returndata:  # return data is empty
                     return {'message': 'No Records found for device with id ' + str(deviceid)}, 200
                 else:
-                    return {'data': returndata}, 200
+                    return returndata, 200
             return {'error': 'invalid sourcetype'}
         return {'error': 'invalid number of entries'}
 
